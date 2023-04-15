@@ -4,7 +4,7 @@
 , stdenv
 }@args:
 
-stdenv.mkDerivation (faust.faust2ApplBase (args // {
+stdenv.mkDerivation ((faust.faust2ApplBase (args // {
   baseName = "faust2supercollider";
 })) // {
 
@@ -23,4 +23,4 @@ stdenv.mkDerivation (faust.faust2ApplBase (args // {
          --prefix PATH : "$PATH"
      done
    '';
-}
+})

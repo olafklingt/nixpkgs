@@ -1,12 +1,12 @@
-{
-faust
+{ faust
 , supercollider
 , makeWrapper
 , stdenv
 }@args:
 
-
-stdenv.mkDerivation ((faust.faust2ApplBase (args // {baseName = "faust2supercollider";})) // {
+stdenv.mkDerivation (faust.faust2ApplBase (args // {
+  baseName = "faust2supercollider";
+})) // {
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -23,4 +23,4 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {baseName = "faust2supercoll
          --prefix PATH : "$PATH"
      done
    '';
-})
+}

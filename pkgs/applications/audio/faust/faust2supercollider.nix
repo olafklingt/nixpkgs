@@ -17,10 +17,8 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {
   '';
 
 
-#        --set FAUSTLDDIR "${faust}/lib" \
-#        --set FAUSTLIB "${faust}/share/faust" \
-#        --set FAUSTINC "${faust}/include/faust" \
-#        --set FAUSTARCH "${faust}/share/faust" \
+#        --set "$nix_cc_wrapper_target_host" "''${!nix_cc_wrapper_target_host}" \
+#        --set "$nix_bintools_wrapper_target_host" "''${!nix_bintools_wrapper_target_host}" \
 
   postFixup = ''
     # export parts of the build environment
@@ -31,12 +29,14 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {
       nix_bintools_wrapper_target_host="$(printenv | grep ^NIX_BINTOOLS_WRAPPER_TARGET_HOST | sed 's/=.*//')"
       wrapProgram "$script" \
         --set SUPERCOLLIDER_HEADERS "${supercollider}/include/SuperCollider/" \
+        --set FAUSTLDDIR "${faust}/lib" \
+        --set FAUSTLIB "${faust}/share/faust" \
+        --set FAUSTINC "${faust}/include/faust" \
+        --set FAUSTARCH "${faust}/share/faust" \
         --prefix PATH : "$PATH" \
         --prefix PKG_CONFIG_PATH : "$PKG_CONFIG_PATH" \
         --set NIX_CFLAGS_COMPILE "$NIX_CFLAGS_COMPILE" \
         --set NIX_LDFLAGS "$NIX_LDFLAGS -lpthread" \
-        --set "$nix_cc_wrapper_target_host" "''${!nix_cc_wrapper_target_host}" \
-        --set "$nix_bintools_wrapper_target_host" "''${!nix_bintools_wrapper_target_host}" \
         --prefix LIBRARY_PATH "$libPath"
     done
   '';

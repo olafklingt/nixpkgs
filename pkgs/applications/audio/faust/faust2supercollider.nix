@@ -30,7 +30,7 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {
     for script in "$out"/bin/*; do
       wrapProgram "$script" \
         --set SUPERCOLLIDER_HEADERS "${supercollider}/include/SuperCollider/" \
-        --set FAUSTLDDIR "${faust}/lib" \
+        --set FAUSTLDDIR "${faust}/lib" 
     done
   '';
 })

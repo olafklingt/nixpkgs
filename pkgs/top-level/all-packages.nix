@@ -38163,6 +38163,8 @@ with pkgs;
 
   faust2supercollider = callPackage ../applications/audio/faust/faust2supercollider.nix { };
 
+  faust2w = callPackage ../applications/audio/faust/faust2w.nix { };
+
   faust2firefox = callPackage ../applications/audio/faust/faust2firefox.nix { };
 
   faust2jack = callPackage ../applications/audio/faust/faust2jack.nix { };

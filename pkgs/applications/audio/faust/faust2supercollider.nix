@@ -30,7 +30,7 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {
         --set FAUSTLDDIR "${faust}/lib" \
         --set FAUSTLIB "${faust}/share/faust" \
         --set FAUSTINC "${faust}/include/faust" \
-        --set FAUSTARCH "${faust}/share/faust" \
+        --set FAUSTARCH "${faust}/share/faust" 
     done
   '';
 })

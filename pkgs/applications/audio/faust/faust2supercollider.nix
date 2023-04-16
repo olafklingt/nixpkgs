@@ -21,6 +21,9 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {
 #        --set NIX_LDFLAGS "$NIX_LDFLAGS -lpthread" \
 #        --prefix LIBRARY_PATH "$libPath"
 #        --prefix PATH : "$PATH" 
+#        --set FAUSTLIB "${faust}/share/faust" \
+#        --set FAUSTINC "${faust}/include/faust" \
+#        --set FAUSTARCH "${faust}/share/faust" 
 
   postFixup = ''
     # export parts of the build environment
@@ -28,9 +31,6 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {
       wrapProgram "$script" \
         --set SUPERCOLLIDER_HEADERS "${supercollider}/include/SuperCollider/" \
         --set FAUSTLDDIR "${faust}/lib" \
-        --set FAUSTLIB "${faust}/share/faust" \
-        --set FAUSTINC "${faust}/include/faust" \
-        --set FAUSTARCH "${faust}/share/faust" 
     done
   '';
 })

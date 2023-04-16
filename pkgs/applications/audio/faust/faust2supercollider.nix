@@ -20,6 +20,7 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {
 #        --set NIX_CFLAGS_COMPILE "$NIX_CFLAGS_COMPILE" \
 #        --set NIX_LDFLAGS "$NIX_LDFLAGS -lpthread" \
 #        --prefix LIBRARY_PATH "$libPath"
+#        --prefix PATH : "$PATH" 
 
   postFixup = ''
     # export parts of the build environment
@@ -30,7 +31,6 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {
         --set FAUSTLIB "${faust}/share/faust" \
         --set FAUSTINC "${faust}/include/faust" \
         --set FAUSTARCH "${faust}/share/faust" \
-        --prefix PATH : "$PATH" 
     done
   '';
 })

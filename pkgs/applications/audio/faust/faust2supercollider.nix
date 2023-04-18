@@ -1,6 +1,5 @@
 { faust
 , supercollider
-, pkg-config
 , makeWrapper
 , stdenv
 }@args:
@@ -9,7 +8,7 @@ stdenv.mkDerivation ((faust.faust2ApplBase (args // {
   baseName = "faust2supercollider";
 })) // {
 
-  nativeBuildInputs = [ pkg-config makeWrapper ];
+  nativeBuildInputs = [ makeWrapper ];
 
   propagatedBuildInputs = [ faust supercollider];
 
